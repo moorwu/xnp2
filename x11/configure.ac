@@ -135,7 +135,6 @@ AS_IF([test x"$enable_gtk3" = "xyes"],
   [
     PKG_CHECK_MODULES([GTK], [gtk+-3.0],
       [
-        AC_DEFINE(USE_GTK2,1,[Define to 1 if you have the GTK+-2 library.])
         AC_DEFINE(USE_GTK3,1,[Define to 1 if you have the GTK+-3 library.])
       ],
       enable_gtk3=no
@@ -151,6 +150,7 @@ AS_IF([test x"$enable_gtk3" != "xyes"],
 )
 AC_SUBST(GTK_CFLAGS)
 AC_SUBST(GTK_LIBS)
+AM_CONDITIONAL(USE_GTK3,test x"$enable_gtk3" = "xyes")
 
 dnl
 dnl Checks for SDL and SDL_mixer

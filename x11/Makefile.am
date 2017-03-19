@@ -32,6 +32,46 @@ EXTFM_SOURCES=	$(real_topsrcdir)/x11/ext/opl3.cpp \
 		$(real_topsrcdir)/x11/ext/externalopna.cpp \
 		$(real_topsrcdir)/x11/ext/externalpsg.cpp
 
+if USE_GTK3
+GTK_SOURCES=	$(real_topsrcdir)/x11/gtk3/dialog_about.c \
+		$(real_topsrcdir)/x11/gtk3/dialog_calendar.c \
+		$(real_topsrcdir)/x11/gtk3/dialog_config.c \
+		$(real_topsrcdir)/x11/gtk3/dialog_midi.c \
+		$(real_topsrcdir)/x11/gtk3/dialog_newdisk.c \
+		$(real_topsrcdir)/x11/gtk3/dialog_screen.c \
+		$(real_topsrcdir)/x11/gtk3/dialog_sound.c \
+		$(real_topsrcdir)/x11/gtk3/window_keydisp.c \
+		$(real_topsrcdir)/x11/gtk3/window_softkbd.c \
+		$(real_topsrcdir)/x11/gtk3/gtk_drawmng.c \
+		$(real_topsrcdir)/x11/gtk3/gtk_screen.c \
+		$(real_topsrcdir)/x11/gtk3/gtk_font.c \
+		$(real_topsrcdir)/x11/gtk3/gtk_keyboard.c \
+		$(real_topsrcdir)/x11/gtk3/gtk_menu.c \
+		$(real_topsrcdir)/x11/gtk3/gtk_mouse.c \
+		$(real_topsrcdir)/x11/gtk3/gtk_main.c \
+		$(real_topsrcdir)/x11/gtk3/gtk_wrapper.c
+GTK_INCLUDE=	$(real_topsrcdir)/x11/gtk3
+else
+GTK_SOURCES=	$(real_topsrcdir)/x11/gtk2/dialog_about.c \
+		$(real_topsrcdir)/x11/gtk2/dialog_calendar.c \
+		$(real_topsrcdir)/x11/gtk2/dialog_config.c \
+		$(real_topsrcdir)/x11/gtk2/dialog_midi.c \
+		$(real_topsrcdir)/x11/gtk2/dialog_newdisk.c \
+		$(real_topsrcdir)/x11/gtk2/dialog_screen.c \
+		$(real_topsrcdir)/x11/gtk2/dialog_sound.c \
+		$(real_topsrcdir)/x11/gtk2/window_keydisp.c \
+		$(real_topsrcdir)/x11/gtk2/window_softkbd.c \
+		$(real_topsrcdir)/x11/gtk2/gtk_drawmng.c \
+		$(real_topsrcdir)/x11/gtk2/gtk_screen.c \
+		$(real_topsrcdir)/x11/gtk2/gtk_font.c \
+		$(real_topsrcdir)/x11/gtk2/gtk_keyboard.c \
+		$(real_topsrcdir)/x11/gtk2/gtk_menu.c \
+		$(real_topsrcdir)/x11/gtk2/gtk_mouse.c \
+		$(real_topsrcdir)/x11/gtk2/gtk_main.c \
+		$(real_topsrcdir)/x11/gtk2/gtk_wrapper.c
+GTK_INCLUDE=	$(real_topsrcdir)/x11/gtk2
+endif
+
 COMMON_SOURCES=	$(real_topsrcdir)/x11/main.c \
 		$(real_topsrcdir)/x11/np2.c \
 		$(real_topsrcdir)/x11/dosio.c \
@@ -51,23 +91,7 @@ COMMON_SOURCES=	$(real_topsrcdir)/x11/main.c \
 		$(real_topsrcdir)/x11/sysmng.c \
 		$(real_topsrcdir)/x11/taskmng.c \
 		$(real_topsrcdir)/x11/timemng.c \
-		$(real_topsrcdir)/x11/gtk2/dialog_about.c \
-		$(real_topsrcdir)/x11/gtk2/dialog_calendar.c \
-		$(real_topsrcdir)/x11/gtk2/dialog_config.c \
-		$(real_topsrcdir)/x11/gtk2/dialog_midi.c \
-		$(real_topsrcdir)/x11/gtk2/dialog_newdisk.c \
-		$(real_topsrcdir)/x11/gtk2/dialog_screen.c \
-		$(real_topsrcdir)/x11/gtk2/dialog_sound.c \
-		$(real_topsrcdir)/x11/gtk2/window_keydisp.c \
-		$(real_topsrcdir)/x11/gtk2/window_softkbd.c \
-		$(real_topsrcdir)/x11/gtk2/gtk_drawmng.c \
-		$(real_topsrcdir)/x11/gtk2/gtk_screen.c \
-		$(real_topsrcdir)/x11/gtk2/gtk_font.c \
-		$(real_topsrcdir)/x11/gtk2/gtk_keyboard.c \
-		$(real_topsrcdir)/x11/gtk2/gtk_menu.c \
-		$(real_topsrcdir)/x11/gtk2/gtk_mouse.c \
-		$(real_topsrcdir)/x11/gtk2/gtk_main.c \
-		$(real_topsrcdir)/x11/gtk2/gtk_wrapper.c \
+		$(GTK_SOURCES) \
 		$(real_topsrcdir)/x11/debug/viewmem.c \
 		$(real_topsrcdir)/x11/misc/threadbase.cpp \
 		$(real_topsrcdir)/x11/misc/tty.cpp \
@@ -260,7 +284,7 @@ xnp2_SOURCES=	$(COMMON_SOURCES)
 
 AM_CPPFLAGS=	-I$(real_topsrcdir) \
 		-I$(real_topsrcdir)/x11 \
-		-I$(real_topsrcdir)/x11/gtk2 \
+		-I$(GTK_INCLUDE) \
 		-I$(real_topsrcdir)/x11/debug \
 		-I$(real_topsrcdir)/common \
 		-I$(real_topsrcdir)/cbus \
