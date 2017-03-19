@@ -31,6 +31,13 @@
 
 G_BEGIN_DECLS
 
+#define	XNP2_APP_TYPE		(xnp2_app_get_type())
+G_DECLARE_FINAL_TYPE(Xnp2App, xnp2_app, XNP2, APP, GtkApplication)
+
+#define	XNP2_APP_WINDOW_TYPE	(xnp2_app_window_get_type())
+G_DECLARE_FINAL_TYPE(Xnp2AppWindow, xnp2_app_window, XNP2, APP_WINDOW,
+    GtkApplicationWindow)
+
 extern GtkWidget *main_window;
 extern GtkWidget *drawarea;
 

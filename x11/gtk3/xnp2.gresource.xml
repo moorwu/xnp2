@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/nonakap/xnp2">
+    <file preprocess="xml-stripblanks">gtk3/xnp2.ui</file>
+  </gresource>
+</gresources>

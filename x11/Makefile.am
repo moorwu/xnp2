@@ -51,6 +51,11 @@ GTK_SOURCES=	$(real_topsrcdir)/x11/gtk3/dialog_about.c \
 		$(real_topsrcdir)/x11/gtk3/gtk_main.c \
 		$(real_topsrcdir)/x11/gtk3/gtk_wrapper.c
 GTK_INCLUDE=	$(real_topsrcdir)/x11/gtk3
+
+GTK_SOURCES+=	$(real_topsrcdir)/x11/gtk3/resource.c
+CLEANFILES+=	$(real_topsrcdir)/x11/gtk3/resource.c
+$(real_topsrcdir)/x11/gtk3/resource.c: $(real_topsrcdir)/x11/gtk3/xnp2.gresource.xml
+	glib-compile-resources $< --target=$@ --generate-source
 else
 GTK_SOURCES=	$(real_topsrcdir)/x11/gtk2/dialog_about.c \
 		$(real_topsrcdir)/x11/gtk2/dialog_calendar.c \
